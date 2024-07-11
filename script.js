@@ -9,6 +9,26 @@ const listaBanderas = [
 		opciones: ["País Basc", "Catalunya", "Andorra"],
 	},
 	{
+		nom: "País Basc",
+		link: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/1200px-Flag_of_the_Basque_Country.svg.png", //cada cacharro es un objeto, estas tienen propiedades: nom, link, opc...
+		opciones: ["França", "Regne Unit", "País Basc"],
+	},
+	{
+		nom: "Regne Unit",
+		link: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg", //cada cacharro es un objeto, estas tienen propiedades: nom, link, opc...
+		opciones: ["Regne Unit", "Alemanya", "Andorra"],
+	},
+	{
+		nom: "Alemanya",
+		link: "https://s1.significados.com/foto/bandera-de-alemania-og.jpg", //cada cacharro es un objeto, estas tienen propiedades: nom, link, opc...
+		opciones: ["País Basc", "Alemanya", "Andorra"],
+	},
+	{
+		nom: "Països Baixos",
+		link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM89PWpoVWcc5Vx1mmGfuUFMZVCwn5cM57xw&s", //cada cacharro es un objeto, estas tienen propiedades: nom, link, opc...
+		opciones: ["Països Baixos", "Andorra", "Catalunya"],
+	},
+	{
 		nom: "França",
 		link: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg/200px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg.png",
 		opciones: ["França", "Alemanya", "Espanya"],
@@ -21,12 +41,12 @@ const listaBanderas = [
 	{
 		nom: "Andorra",
 		link: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Flag_of_Andorra.svg/800px-Flag_of_Andorra.svg.png",
-		opciones: ["Andorra", "Catalunya", "Suïssa"],
+		opciones: ["Suïssa", "Catalunya", "Andorra"],
 	},
 ]
 
 function selectRandomFlag() {
-	const numeroRandom = Math.floor(Math.random() * 4) //<--Math.floor = redondea el numero generado por Math.random (el num generado se multp*4)
+	const numeroRandom = Math.floor(Math.random() * listaBanderas.length) //<--Math.floor = redondea el numero generado por Math.random
 	const bandera = listaBanderas[numeroRandom] //selecciona un objt aleatorio de lista de bandera
 	document.querySelector("img").src = bandera.link
 	document.querySelector("#opciones-1").innerText = bandera.opciones[0]
