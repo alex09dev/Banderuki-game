@@ -1,4 +1,7 @@
 let puntos = 0
+const $opciones1 = document.querySelector("#opciones-1")
+const $opciones2 = document.querySelector("#opciones-2")
+const $opciones3 = document.querySelector("#opciones-3")
 
 const listaBanderas = [
 	{
@@ -82,13 +85,13 @@ function selectRandomFlag(lastFlag = "") {
 selectRandomFlag()
 
 function resetColor() {
-	document.querySelector("#opciones-1").style.backgroundColor = "white"
-	document.querySelector("#opciones-2").style.backgroundColor = "white"
-	document.querySelector("#opciones-3").style.backgroundColor = "white"
+	$opciones1.style.backgroundColor = "white"
+	$opciones2.style.backgroundColor = "white"
+	$opciones3.style.backgroundColor = "white"
 
-	document.querySelector("#opciones-1").style.color = "#3c4043"
-	document.querySelector("#opciones-2").style.color = "#3c4043"
-	document.querySelector("#opciones-3").style.color = "#3c4043"
+	$opciones1.style.color = "#3c4043"
+	$opciones2.style.color = "#3c4043"
+	$opciones3.style.color = "#3c4043"
 }
 
 function escriurePunts() {
