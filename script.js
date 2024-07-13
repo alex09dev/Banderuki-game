@@ -51,7 +51,6 @@ function selectRandomFlag(lastFlag = "") {
 
 	// Usar un filter para no repetir bandera
 
-	console.log(listaBanderas.filter((flag) => flag.nom !== lastFlag))
 	const bandera = listaBanderas.filter((flag) => flag !== lastFlag)[numeroRandom] //selecciona un objt aleatorio de lista de bandera
 	document.querySelector("img").src = bandera.link
 	document.querySelector("#opciones-1").innerText = bandera.opciones[0]
