@@ -1,6 +1,7 @@
-
 let puntos = 0
-
+const $opciones1 = document.querySelector("#opciones-1")
+const $opciones2 = document.querySelector("#opciones-2")
+const $opciones3 = document.querySelector("#opciones-3")
 
 const listaBanderas = [
 	{
@@ -45,9 +46,12 @@ const listaBanderas = [
 	},
 ]
 
-function selectRandomFlag() {
+function selectRandomFlag(lastFlag = "") {
 	const numeroRandom = Math.floor(Math.random() * listaBanderas.length) //<--Math.floor = redondea el numero generado por Math.random
-	const bandera = listaBanderas[numeroRandom] //selecciona un objt aleatorio de lista de bandera
+
+	// Usar un filter para no repetir bandera
+
+	const bandera = listaBanderas.filter((flag) => flag !== lastFlag)[numeroRandom] //selecciona un objt aleatorio de lista de bandera
 	document.querySelector("img").src = bandera.link
 	document.querySelector("#opciones-1").innerText = bandera.opciones[0]
 	document.querySelector("#opciones-2").innerText = bandera.opciones[1]
@@ -57,14 +61,20 @@ function selectRandomFlag() {
 			if (bandera.nom === element.innerText) {
 				document.querySelector("img").src = bandera.link
 				resetColor()
+
 				document.querySelectorAll("button").forEach((el) => el.removeListener)
-				selectRandomFlag()
-				puntos ++
+
+				// Volver a mostrar una bandera aleatoria
+				selectRandomFlag(bandera.nom)
+
+				puntos++
+
+				// Mostrar puntos actuales en pantalla
 				escriurePunts()
 			} else {
 				element.style.backgroundColor = "rgb(239 68 68)"
 				element.style.color = "white"
-				puntos --
+				puntos--
 				escriurePunts()
 			}
 		}
@@ -74,15 +84,15 @@ function selectRandomFlag() {
 selectRandomFlag()
 
 function resetColor() {
-	document.querySelector("#opciones-1").style.backgroundColor = "white"
-	document.querySelector("#opciones-2").style.backgroundColor = "white"
-	document.querySelector("#opciones-3").style.backgroundColor = "white"
+	$opciones1.style.backgroundColor = "white"
+	$opciones2.style.backgroundColor = "white"
+	$opciones3.style.backgroundColor = "white"
 
-	document.querySelector("#opciones-1").style.color = "#3c4043"
-	document.querySelector("#opciones-2").style.color = "#3c4043"
-	document.querySelector("#opciones-3").style.color = "#3c4043"
+	$opciones1.style.color = "#3c4043"
+	$opciones2.style.color = "#3c4043"
+	$opciones3.style.color = "#3c4043"
 }
 
-function escriurePunts(){
+function escriurePunts() {
 	document.querySelector(".points").innerText = puntos
 }
