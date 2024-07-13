@@ -47,15 +47,19 @@ const listaBanderas = [
 ]
 
 function selectRandomFlag(lastFlag = "") {
-	const numeroRandom = Math.floor(Math.random() * listaBanderas.length) //<--Math.floor = redondea el numero generado por Math.random
+	const numeroRandom = Math.floor(Math.random() * (listaBanderas.length - 1)) //<--Math.floor = redondea el numero generado por Math.random
 
 	// Usar un filter para no repetir bandera
 
-	const bandera = listaBanderas.filter((flag) => flag !== lastFlag)[numeroRandom] //selecciona un objt aleatorio de lista de bandera
+	const bandera = listaBanderas.filter((flag) => flag.nom !== lastFlag)[numeroRandom] //selecciona un objt aleatorio de lista de bandera
+
+
 	document.querySelector("img").src = bandera.link
-	document.querySelector("#opciones-1").innerText = bandera.opciones[0]
-	document.querySelector("#opciones-2").innerText = bandera.opciones[1]
-	document.querySelector("#opciones-3").innerText = bandera.opciones[2]
+	$opciones1.innerText = bandera.opciones[0]
+	$opciones2.innerText = bandera.opciones[1]
+	$opciones3.innerText = bandera.opciones[2]
+
+
 	document.querySelectorAll("button").forEach(function (element) {
 		element.onclick = function () {
 			if (bandera.nom === element.innerText) {
