@@ -50,7 +50,7 @@ img {
     }
 }
 
-button {
+.botones button {
     width: 100%;
     align-items: center;
     appearance: none;
@@ -84,33 +84,33 @@ button {
     z-index: 0;
 }
 
-button:hover {
+.botones button:hover {
     transform: scale(1.1);
 }
 
-button:active {
+.botones button:active {
     box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
     outline: none;
 }
 
 
-button:not(:disabled) {
+.botones button:not(:disabled) {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-button:not(:disabled):hover {
+.botones button:not(:disabled):hover {
     box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
 }
 
-button:not(:disabled):focus {
+.botones button:not(:disabled):focus {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
-button:not(:disabled):active {
+.botones button:not(:disabled):active {
     box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
 }
 
-button:disabled {
+.botones button:disabled {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
 
