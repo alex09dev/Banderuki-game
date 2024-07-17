@@ -53,36 +53,38 @@ function selectRandomFlag(lastFlag = "") {
 
 	const bandera = listaBanderas.filter((flag) => flag.nom !== lastFlag)[numeroRandom] //selecciona un objt aleatorio de lista de bandera
 
-
 	document.querySelector("img").src = bandera.link
 	$opciones1.innerText = bandera.opciones[0]
 	$opciones2.innerText = bandera.opciones[1]
 	$opciones3.innerText = bandera.opciones[2]
 
+	document
+		.querySelector(".botones")
+		.querySelectorAll("button")
+		.forEach(function (element) {
+			element.onclick = function () {
+				if (bandera.nom === element.innerText) {
+					document.querySelector("img").src = bandera.link
+					resetColor()
 
-	document.querySelectorAll("button").forEach(function (element) {
-		element.onclick = function () {
-			if (bandera.nom === element.innerText) {
-				document.querySelector("img").src = bandera.link
-				resetColor()
+					document.querySelectorAll("button").forEach((el) => el.removeListener)
 
-				document.querySelectorAll("button").forEach((el) => el.removeListener)
+					// Volver a mostrar una bandera aleatoria
+					selectRandomFlag(bandera.nom)
 
-				// Volver a mostrar una bandera aleatoria
-				selectRandomFlag(bandera.nom)
+					puntos++
 
-				puntos++
-
-				// Mostrar puntos actuales en pantalla
-				escriurePunts()
-			} else {
-				element.style.backgroundColor = "rgb(239 68 68)"
-				element.style.color = "white"
-				puntos--
-				escriurePunts()
+					// Mostrar puntos actuales en pantalla
+					escriurePunts()
+				} else {
+					element.style.backgroundColor = "rgb(239 68 68)"
+					element.style.color = "white"
+					puntos--
+					element.disabled = true
+					escriurePunts()
+				}
 			}
-		}
-	})
+		})
 }
 
 selectRandomFlag()
@@ -95,8 +97,19 @@ function resetColor() {
 	$opciones1.style.color = "#3c4043"
 	$opciones2.style.color = "#3c4043"
 	$opciones3.style.color = "#3c4043"
+
+	$opciones1.disabled = false
+	$opciones2.disabled = false
+	$opciones3.disabled = false
 }
 
 function escriurePunts() {
 	document.querySelector(".points").innerText = puntos
+}
+
+function reset(){
+	puntos=0
+	escriurePunts()
+	selectRandomFlag()
+	resetColor()
 }
